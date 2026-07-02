@@ -38,10 +38,7 @@ class DatabaseManager {
             } else {
                 DatabaseManager.instance = new Sequelize(DATABASE_URL, {
                     dialect: "postgres",
-                    ssl: true,
-                    protocol: "postgres",
                     dialectOptions: {
-                        native: true,
                         ssl: { require: true, rejectUnauthorized: false },
                     },
                     logging: false,

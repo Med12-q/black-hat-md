@@ -5,7 +5,7 @@ const { createContext } = require("./gmdHelpers");
 const { getSetting, getAllSettings } = require("./database/settings");
 const logger = require("gifted-baileys/lib/Utils/logger").default.child({});
 const { isJidGroup, downloadMediaMessage } = require("gifted-baileys");
-const { getGroupSetting } = require("../black_hat/database/groupSettings");
+// getGroupSetting is imported per-function below
 
 
 const formatTime = (timestamp, timeZone = 'Africa/Nairobi') => {

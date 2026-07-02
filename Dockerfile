@@ -1,20 +1,23 @@
 FROM node:20-slim
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        ffmpeg \
-        ca-certificates \
-        curl && \
-    rm -rf /var/lib/apt/lists/*
+  RUN apt-get update && \
+      apt-get install -y --no-install-recommends \
+          ffmpeg \
+          ca-certificates \
+          curl \
+          python3 \
+          build-essential && \
+      rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+  WORKDIR /app
 
-COPY package*.json ./
+  COPY package*.json ./
 
-RUN npm install --omit=dev
+  RUN npm install --omit=dev
 
-COPY . .
+  COPY . .
 
-EXPOSE 5000
+  EXPOSE 5000
 
-CMD ["npm", "start"]
+  CMD ["node", "index.js"]
+  
