@@ -1,6 +1,11 @@
 const { DATABASE } = require("./database");
 const { DataTypes } = require("sequelize");
-const { globalLidMapping } = require("gifted-baileys/lib/Utils/lid-mapping");
+let globalLidMapping = {};
+  try {
+    ({ globalLidMapping } = require("gifted-baileys/lib/Utils/lid-mapping"));
+  } catch (_) {
+    // module path may vary by version — fallback to empty map
+  }
 
 const LidMappingDB = DATABASE.define(
     "LidMapping",
